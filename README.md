@@ -7,7 +7,7 @@ Cet article présente la création d'un dockerfile permettant de construire un c
 - Le Dockerfile se trouve à la racine de arborescence
 - Le Contenu du site, qui sera à copier dans le dossier /var/ww/html/ dans le Dockerfile se trouve dans le dossier contenu. Il contient égamenet le template boostrap
 
-![10-liting-arborescence](assets\18-lab-arborescence.JPG)
+![10-liting-arborescence](assets/18-lab-arborescence.JPG)
 
 
 
@@ -38,7 +38,7 @@ COPY contenu/ /var/www/html/
 sudo docker build -t exemple/apache_php .
 ```
 
-![11-build-image](assets\11-build-image.JPG)
+![11-build-image](assets/11-build-image.JPG)
 
 2) Lancer le conteneur en arrière plan.
 
@@ -50,18 +50,18 @@ sudo docker run -p 9090:80 exemple/apache_php
 
 ```
 
-![17-lab-run](assets\17-lab-run.JPG)
+![17-lab-run](assets/17-lab-run.JPG)
 
 3) Obtenir le nom de l'image : sudo docker ps
 
-![16-lab-ps](assets\16-lab-ps.JPG)
+![16-lab-ps](assets/16-lab-ps.JPG)
 
 4) Obtenir l'IP du conteneur
 
 sudo docker inspect  admiring_leavitt | grep IPAddress
 
-![15-labo-ip-grep](assets\15-labo-ip-grep.JPG)
+![15-labo-ip-grep](assets/15-labo-ip-grep.JPG)
 
 L'ip permet d'accéder au serveur httpd depuis la machine hôte grâce à un navigateur.
 
-5) Vérifier le résultat![14-affichage-site-template](assets\14-affichage-site-template.JPG)
+5) Vérifier le résultat![14-affichage-site-template](assets/14-affichage-site-template.JPG)
