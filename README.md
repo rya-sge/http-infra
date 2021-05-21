@@ -22,12 +22,12 @@ https://github.com/chancejs/chancejs/blob/master/docs/thing/animal.md
 
 ## Lancement du serveur
 Afin de lancer le serveur, exécutez le script build-image.sh
-[![](images/buildscript.png)]
+![](images/buildscript.png)
 Puis run le container avec le script run-container.sh. Le container sera exécuté en arrière plan. Si vous souhaitez voir la payload dans le terminal, éditer le fichier et retire l'option -d de la commande run.
-[!(images/runscript.png)]
+![](images/runscript.png)
 
 Ensuite, se rendre sur un navigateur et entrer l'adresse ip du docker avec le port 3000 afin de recevoir une liste d'animaux sous format json
-[!(images/ipport.png)]
+![](images/ipport.png)
 
 
 Afin de lancer le serveur, il faut tout d'abord build l'image dockerà partir du Dockerfile fourni dans http-infra/docker-images/express-image avec la commande suivante :
@@ -39,10 +39,10 @@ Si le processus s'est déroulé correctement, vous devriez avoir un message d'ac
 Il ne reste plus qu'à accéder au site depuis votre navigateur en précisant ip:3000
 
 Afin de connaitre le nom du container :
-[![](images/dockerps.png)]
+![](images/dockerps.png)
 
 Afin de connaitre l'adresse IP du container :
-[![](images/getip.png)]
+![](images/getip.png)
 
 
 
