@@ -1,0 +1,13 @@
+
+var Chance = require('chance');
+var chance = new Chance();
+console.log("Bonjour " + chance.name());
+
+apt.get('/', function(req, res){
+	res.send("Hello visiteur");
+}
+
+app.listen(3000, function(){
+	console.log("Accepte les requête HTTP sur le port 300 !");
+});
+
