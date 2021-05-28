@@ -4,21 +4,13 @@
 
 Cette partie indique, dans l'ordre, ce que fait le dockerfile
 
-1) Le dockerfile se base sur une image d'apache ayant également le support de php (php:7.2-apache)
-
-2) Copie le contenu situé dans *conf* dans le dossier */etc/apache2* du conteneur
-
-3) Active avec a2enmode les modules : *proxy* et *proxy_http*
-
-- proxy fournit une passerelle pour le serveur HTTP Apache
-- proxy_http fournit le support pour  des requêtes HTTP et HTTPS.
-
-4) Active les sites 0001-* et 001-*
-
+1) Le dockerfile des différents images Apache met à jour le système et installe "vim"
+2) Modification de l'index du site statique afin d'ajouter un script custom "student.js"
+3) Le script student.js est exécuté au chargement de la page web. Il contient une fonction loadAnimals() qui exécute une fonction faisant une requête sur l'api afin de recevoir du json contenant les Animals (voir partie précédente). Toutes les deux secondes, on remplace le texte de la class CSS "skills" par un nouvel Animal provenant du json.
+4) Ainsi, sur la page principale du site statique, on peut voir un nouvel Animal toutes les deux secondes sous la bannière principale
 
 
 
 
 ## Sources annexes:
-
-https://httpd.apache.org/docs/2.4/fr/mod/mod_proxy_http.html
+https://api.jquery.com/jquery.getjson/
