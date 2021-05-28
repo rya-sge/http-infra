@@ -18,13 +18,13 @@ function loadAnimals(){
                         message =  animals[0].espece +  \"prime=\" + animals[0].$
                 }
                 $(\".animals\").text(message);
-
                 });
         };
 loadAnimals();
 setInterval(loadAnimals, 3000);
 
-});`
+});
+`
 4) Ainsi, sur la page principale du site statique, on peut voir un nouvel Animal toutes les deux secondes sous la bannière principale
 
 
