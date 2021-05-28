@@ -8,16 +8,16 @@ Cette partie indique, dans l'ordre, ce que fait le dockerfile
 2) Modification de l'index du site statique afin d'ajouter un script custom "student.js"
 3) Le script student.js est exécuté au chargement de la page web. Il contient une fonction loadAnimals() qui exécute une fonction faisant une requête sur l'api afin de recevoir du json contenant les Animals (voir partie précédente). Toutes les deux secondes, on remplace le texte de la class CSS "animals" par un nouvel Animal (espèce et numéro d'agent) provenant du json.
 `$(function(){
-console.log("Loading animals");
+console.log(\"Loading animals\");
 
 function loadAnimals(){
-        $.getJSON("/api/animals", function(animals){
+        $.getJSON(\"/api/animals\", function(animals){
                 console.log(animals);
-                var message = "Nobody is here";
+                var message = \"Nobody is here\";
                 if (animals.length > 0){
-                        message =  animals[0].espece +  "prime=" + animals[0].$
+                        message =  animals[0].espece +  \"prime=\" + animals[0].$
                 }
-                $(".animals").text(message);
+                $(\".animals\").text(message);
 
                 });
         };
