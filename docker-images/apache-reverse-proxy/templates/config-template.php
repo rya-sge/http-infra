@@ -12,27 +12,28 @@ $DYNAMIC_APP_2 = getenv('DYNAMIC_APP_2');
 	
 	<Proxy balancer://static>
 
-		BalancerMember http://<?php print "$STATIC_APP_1"?>/ min=10 max=500 timeout=60 				loadfactor=1
+		BalancerMember 'http://<?php print "$STATIC_APP_1"?>' min=10 max=500 timeout=60 				loadfactor=1
 
-		BalancerMember http://<?php print "$STATIC_APP_2"?>/ min=10 max=500 timeout=60 				loadfactor=1
+		BalancerMember 'http://<?php print "$STATIC_APP_2"?>' min=10 max=500 timeout=60 				loadfactor=1
 
 	</Proxy>
 	
 	<Proxy balancer://dynamic>
-		BalancerMember http://<?php print "$DYNAMIC_APP_1"?>/ min=10 max=500 timeout=60 				loadfactor=1
+		BalancerMember 'http://<?php print "$DYNAMIC_APP_1"?>' min=10 max=500 timeout=60 				loadfactor=1
 
-		BalancerMember http://<?php print "$DYNAMIC_APP_2"?>/ min=10 max=500 timeout=60 				loadfactor=1
+		BalancerMember 'http://<?php print "$DYNAMIC_APP_2"?>' min=10 max=500 timeout=60 				loadfactor=1
 
 	</Proxy>
 
-P	ProxyPreserveHost On
+	ProxyPreserveHost On
 
-	ProxyPass '/' balancer://static
-	ProxyPassReverse '/' balancer://static
 
-P	ProxyPass '/api/animals' balancer://cluster/
+	ProxyPass '/api/animals' "balancer://dynamic/"
 
-	ProxyPassReverse '/api/animals' balancer://cluster/
+	ProxyPassReverse '/api/animals' "balancer://dynamic/"
+	
+	ProxyPass '/' "balancer://static/"
+        ProxyPassReverse '/' "balancer://static/"
 
 </VirtualHost>
 
