@@ -14,3 +14,4 @@ Cette partie indique, dans l'ordre, ce que fait le dockerfile
 
 ## Sources annexes:
 https://api.jquery.com/jquery.getjson/
+https://learn.jquery.com/using-jquery-core/selecting-elements/
