@@ -58,7 +58,7 @@ exec apache2 -DFOREGROUND "$@"
 ```
 
 ## **Template du reverse proxy**
-Utilisation de code php afin d'avoir accès à des variables d'environnement. Ces variables permettent de ne PAS avoir à coder les ProxyPass en dur dans le fichier config, mais bien de les spécifier au démarrage.
+Utilisation de code php afin d'avoir accès à des variables d'environnement. Ces variables permettent de ne PAS avoir à coder les ProxyPass en dur dans le fichier config, mais bien de les spécifier au démarrage du container comme présenté en-dessous.
 ```
 <?php
 
@@ -82,7 +82,7 @@ $DYNAMIC_APP = getenv('DYNAMIC_APP');
 1) Lancer les container des images apache_php et express_dynamic et récupérer leurs IP respectives. (Les méthodes sont explicitées dans les premières parties du labo.)
 2) Lancer la commande suivante ```docker run -d -e STATIC_APP=172.17.0.x:80 -e DYNAMIC_APP=172.17.0.y:3000 --name apache_reverse -p 8080:80 http_infra_sauge_viotti/reverse_proxy```
 3) STATIC_APP doit contenir l'IP du container apache_php et DYNAMIC_APP doit contenir celle du express_dynamic
-4) Accéder au site
+4) Accédez au site et vous devriez voir apparaître "espece : prime=XXX". Cela indique que le contenu dynamique fonctionne.
 
 
 
