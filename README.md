@@ -7,7 +7,7 @@ Cette partie indique, dans l'ordre, ce que fait le dockerfile
 1) Le dockerfile copie apache2_foreground dans le usr/local/bin
 
 ## **apache2_foreground**
-Script exécuté au démarrage du container
+Script exécuté au démarrage du container. Il permet l'utilisation de variables d'environnement.
 ```
 #!/bin/bash
 set -e
