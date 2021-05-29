@@ -21,7 +21,7 @@ Cet article présente la création d'un dockerfile permettant de construire un c
 
 ## Arborescence
 
-- Le Dockerfile se trouve à la racine de arborescence
+- les scripts Docker et le Dockerfile se trouvent dans le dossier docker-images
 - Le Contenu du site, qui sera à copier dans le dossier /var/ww/html/ dans le Dockerfile se trouve dans le dossier contenu. Il contient également le template boostrap
 
 ![10-liting-arborescence](assets/18-lab-arborescence.JPG)
@@ -47,13 +47,15 @@ FROM php:7.2-apache
 COPY contenu/ /var/www/html/
 ```
 
+La directive COPY va copier le dossier contenu dans le dossier /var/www/html/ du conteneur.
 
+##  3) Lancement conteneur(build, run, etc.)
 
-## 3) Lancement conteneur(build, run, etc.)
+Les fichiers nécessaires se trouvent dans *docker-images*
 
 1) Construire le conteneur à partir de l'image
 
-Pour ce faire vous pouvez lancer le script ./build-image-basique.sh
+Pour ce faire vous pouvez lancer le script *build-image-basique.sh*
 
 Celui-ci effectue la commande suivante :
 
@@ -63,17 +65,28 @@ docker build --tag http_infra_sauge_viotti/apache_php .
 
 2) Lancer le conteneur en arrière plan.
 
-Pour cela il suffit de lancer le script run-container.sh
+Pour cela il suffit de lancer le script *run-container.sh*
 
 Port mapping : le port 80  du conteneur sur lequel écoute le serveur sera redirigé sur le port 8081 de la machine hôte (localhost)
 
 ```
 docker run -d -p 8081:80 http_infra_sauge_viotti/apache_php
 
-
 ```
 
 
+
+**Exemple :**
+
+![build-run](assets/build-run.PNG)
+
+
+
+## Vérification
+
+Vous pouvez ensuite accéder au serveur web en localhost sur le port 8081
+
+![verif-localhost](assets/verif-localhost.PNG)
 
 ### Accéder au serveur avec l'ip du conteneur
 
