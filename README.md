@@ -111,3 +111,19 @@ docker inspect <nom conteneur ou id> | grep IPAddress
 L'ip permet d'accéder au serveur httpd depuis la machine hôte grâce à un navigateur.
 
 c) Vérifier le résultat![14-affichage-site-template](assets/14-affichage-site-template.JPG)
+
+## Apache arborescence
+
+Vous pouvez obtenir un shell sur le conteneur en arrière plan avec la commande suivante :
+
+```
+docker exec -it <nom conteneur> /bin/bash
+```
+
+Le contenu du site se trouve dans */var/www/html*
+
+![contenu](C:\Users\super\switchdrive\HEIG\s4\RES\labo\http_final\http-infra\assets\contenu.PNG)
+
+Les fichiers de configuration se trouvent dans */etc/apache2*
+
+![apache-arborescence](C:\Users\super\switchdrive\HEIG\s4\RES\labo\http_final\http-infra\assets\apache-arborescence.PNG)
