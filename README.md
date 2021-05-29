@@ -21,10 +21,11 @@ Cet article présente la création d'un dockerfile permettant de construire un c
 
 ## Arborescence
 
-- les scripts Docker et le Dockerfile se trouvent dans le dossier docker-images
+- Le dossier racine se trouve dans docker-images/apache-php-image. Celui-ci contient les scripts Docker nécessaires
+
 - Le Contenu du site, qui sera à copier dans le dossier /var/ww/html/ dans le Dockerfile se trouve dans le dossier contenu. Il contient également le template boostrap
 
-![10-liting-arborescence](assets/18-lab-arborescence.JPG)
+![arborescence](C:\Users\super\switchdrive\HEIG\s4\RES\labo\http_final\http-infra\assets\arborescence.PNG)
 
 
 
