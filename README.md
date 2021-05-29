@@ -122,8 +122,8 @@ docker exec -it <nom conteneur> /bin/bash
 
 Le contenu du site se trouve dans */var/www/html*
 
-![contenu](C:\Users\super\switchdrive\HEIG\s4\RES\labo\http_final\http-infra\assets\contenu.PNG)
+![contenu](assets/contenu.PNG)
 
 Les fichiers de configuration se trouvent dans */etc/apache2*
 
-![apache-arborescence](C:\Users\super\switchdrive\HEIG\s4\RES\labo\http_final\http-infra\assets\apache-arborescence.PNG)
+![apache-arborescence](assets/apache-arborescence.PNG)
