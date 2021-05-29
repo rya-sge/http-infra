@@ -10,7 +10,7 @@ docker volume create portainer_data
 docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 ```
 
-Cela va créer un volume pour Portainer et vous permettre de vous connecter à l'UI sur les ports désignés. (ex: localhost:8000)
+Cela va créer un volume pour Portainer et vous permettre de vous connecter à l'UI sur les ports désignés. (ex: localhost:9000)
 Vous devriez voir apparaître une interface comme ceci :
 ![](figures/portainer.png)
 
