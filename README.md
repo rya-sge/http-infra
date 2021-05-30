@@ -33,9 +33,13 @@ setInterval(loadAnimals, 3000);
 
 4) Ainsi, sur la page principale du site statique, on peut voir un nouvel Animal toutes les deux secondes sous la bannière principale
 
+## Exemples
+
+![exemple](assets/exemple.PNG)
 
 
 
 ## Sources annexes:
+
 https://api.jquery.com/jquery.getjson/
 https://learn.jquery.com/using-jquery-core/selecting-elements/
