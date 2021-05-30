@@ -13,6 +13,7 @@ $DYNAMIC_APP_2 = getenv('DYNAMIC_APP_2');
 	<Location "/balancer-manager">
 	 SetHandler balancer-manager	
 	</Location>
+	Header add Set-Cookie "ROUTEID=.%{BALANCER_WORKER_ROUTE}e; path=/" env=BALANCER_ROUTE_CHANGED
 	
 	<Proxy balancer://static>
 
@@ -26,11 +27,12 @@ $DYNAMIC_APP_2 = getenv('DYNAMIC_APP_2');
 	</Proxy>
 	
 	<Proxy balancer://dynamic>
+	
 		BalancerMember 'http://<?php print "$DYNAMIC_APP_1"?>' route=1
 
 		BalancerMember 'http://<?php print "$DYNAMIC_APP_2"?>' route=2
 		
-		ProxySet stickysession=ROUTEID 			
+		ProxySet stickysession=ROUTEID			
 
 	</Proxy>
 
