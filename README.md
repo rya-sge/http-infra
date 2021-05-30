@@ -1,6 +1,13 @@
+---
+You develop a web app (e.g. with express.js) that administrators can use to monitor and update your web infrastructure.
+You find a way to control your Docker environment (list containers, start/stop containers, etc.) from the web app. For instance, you use the Dockerode npm module (or another Docker client library, in any of the supported languages).
+You have documented your configuration and your validation procedure in your report.
+---
+
 # README
 
 ## **Management UI**
+
 Afin de mettre en place un management UI, nous avons décidé d'utiliser Portainer. (https://www.portainer.io/)
 
 ## **Utilisation**
@@ -14,5 +21,12 @@ Cela va créer un volume pour Portainer et vous permettre de vous connecter à l
 Vous devriez voir apparaître une interface comme ceci :
 ![](figures/portainer.png)
 
-## **Sources
+
+
+## Validation
+
+Nous avons arrêter avec le bouton stop un des containers et nous avons ensuite vérifié qu'il était bien stoppé
+
+## Sources
+
 https://documentation.portainer.io/v2.0/deploy/ceinstalldocker/
