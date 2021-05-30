@@ -1,6 +1,5 @@
 ---
 ​---
-
 You have a GitHub repo with everything needed to build the various images.
 
 You have found a way to replace the static configuration of the reverse proxy (hard-coded IP adresses) with a dynamic configuration.
@@ -16,6 +15,8 @@ You are able to explain how you have implemented the solution and walk us throug
 You have documented your configuration in your report.
 ​---
 ---
+
+
 
 
 
