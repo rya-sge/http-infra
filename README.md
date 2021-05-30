@@ -1,4 +1,26 @@
+---
+You have a GitHub repo with everything needed to build the various images.
+
+You have found a way to replace the static configuration of the reverse proxy (hard-coded IP adresses) with a dynamic configuration.
+
+You may use the approach presented in the webcast (environment variables and PHP script executed when the reverse proxy container is started), or you may use another approach. The requirement is that you should not have to rebuild the reverse proxy Docker image when the IP addresses of the servers change.
+
+You are able to do an end-to-end demo with a well-prepared scenario. Make sure that 
+
+you can demonstrate that everything works fine when the IP addresses change!
+
+You are able to explain how you have implemented the solution and walk us through the configuration and the code.
+
+You have documented your configuration in your report.
+---
+
 # README
+
+## Arborescence
+
+La configuration du reverse proxy se trouve dans docker-images/apache-reverse-proxy.
+
+![arborescence](assets/arborescence.PNG)
 
 ## **DockerFile**
 
@@ -8,52 +30,21 @@ Cette partie indique, dans l'ordre, ce que fait le dockerfile
 
 ## **apache2_foreground**
 Script exécuté au démarrage du container. Il permet l'utilisation de variables d'environnement.
-```
+
+- Le début du script permet d'afficher les adresses IP, si le container n'est pas lancé en arrière plan.
+- La commande php permet de copier le fichier de configuration config-template.php dans /etc/apache2/sites-available
+
+Le reste du script reste inchangée et provient de l'image apache 7.2 utilisée pour le labo
+
+```bash
 #!/bin/bash
 set -e
 
 echo "Setup for the res labo"
 echo "Static app URL : $STATIC_APP"
 echo "Dynamic app URL: $DYNAMIC_APP"
-php /var/apache2/templates/config-template.php > /etc/apache2/sites-available/01-reverse-proxy.conf
 
-# Note: we don't just use "apache2ctl" here because it itself is just a shell-script wrapper around apache2 which provides extra functionality like "apache2ctl start" for launching apache2 in the background.
-# (also, when run as "apache2ctl <apache args>", it does not use "exec", which leaves an undesirable resident shell process)
-
-: "${APACHE_CONFDIR:=/etc/apache2}"
-: "${APACHE_ENVVARS:=$APACHE_CONFDIR/envvars}"
-if test -f "$APACHE_ENVVARS"; then
-	. "$APACHE_ENVVARS"
-fi
-
-# Apache gets grumpy about PID files pre-existing
-: "${APACHE_RUN_DIR:=/var/run/apache2}"
-: "${APACHE_PID_FILE:=$APACHE_RUN_DIR/apache2.pid}"
-rm -f "$APACHE_PID_FILE"
-
-# create missing directories
-# (especially APACHE_RUN_DIR, APACHE_LOCK_DIR, and APACHE_LOG_DIR)
-for e in "${!APACHE_@}"; do
-	if [[ "$e" == *_DIR ]] && [[ "${!e}" == /* ]]; then
-		# handle "/var/lock" being a symlink to "/run/lock", but "/run/lock" not existing beforehand, so "/var/lock/something" fails to mkdir
-		#   mkdir: cannot create directory '/var/lock': File exists
-		dir="${!e}"
-		while [ "$dir" != "$(dirname "$dir")" ]; do
-			dir="$(dirname "$dir")"
-			if [ -d "$dir" ]; then
-				break
-			fi
-			absDir="$(readlink -f "$dir" 2>/dev/null || :)"
-			if [ -n "$absDir" ]; then
-				mkdir -p "$absDir"
-			fi
-		done
-
-		mkdir -p "${!e}"
-	fi
-done
-
-exec apache2 -DFOREGROUND "$@"
+php /var/apache2/templates/config-template.php > /etc/apache2/sites-available/001-reverse-proxy.conf
 
 ```
 
@@ -84,8 +75,21 @@ $DYNAMIC_APP = getenv('DYNAMIC_APP');
 3) STATIC_APP doit contenir l'IP du container apache_php et DYNAMIC_APP doit contenir celle du express_dynamic
 4) Accédez au site et vous devriez voir apparaître "espece : prime=XXX". Cela indique que le contenu dynamique fonctionne.
 
+## Exemples
+
+![exemples3](assets/exemples3.PNG)
+
+![exemples2](assets/exemples2.PNG)
+
+![exemples](assets/exemples.PNG)
 
 
+
+
+
+### Mauvaise configuration des IP
+
+![error_configuration](assets/error_configuration.PNG)
 
 ## Sources annexes:
 
