@@ -12,16 +12,16 @@ $DYNAMIC_APP_2 = getenv('DYNAMIC_APP_2');
 	
 	<Proxy balancer://static>
 
-		BalancerMember 'http://<?php print "$STATIC_APP_1"?>' min=10 max=500 timeout=60 				loadfactor=1
+		BalancerMember 'http://<?php print "$STATIC_APP_1"?>'
 
-		BalancerMember 'http://<?php print "$STATIC_APP_2"?>' min=10 max=500 timeout=60 				loadfactor=1
+		BalancerMember 'http://<?php print "$STATIC_APP_2"?>'  				
 
 	</Proxy>
 	
 	<Proxy balancer://dynamic>
-		BalancerMember 'http://<?php print "$DYNAMIC_APP_1"?>' min=10 max=500 timeout=60 				loadfactor=1
+		BalancerMember 'http://<?php print "$DYNAMIC_APP_1"?>' 
 
-		BalancerMember 'http://<?php print "$DYNAMIC_APP_2"?>' min=10 max=500 timeout=60 				loadfactor=1
+		BalancerMember 'http://<?php print "$DYNAMIC_APP_2"?>' 			
 
 	</Proxy>
 
