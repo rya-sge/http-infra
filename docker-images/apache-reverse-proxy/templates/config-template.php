@@ -28,9 +28,9 @@ $DYNAMIC_APP_2 = getenv('DYNAMIC_APP_2');
 	ProxyPreserveHost On
 
 
-	ProxyPass '/api/animals' "balancer://dynamic/"
+	ProxyPass '/api/animals/' "balancer://dynamic/"
 
-	ProxyPassReverse '/api/animals' "balancer://dynamic/"
+	ProxyPassReverse '/api/animals/' "balancer://dynamic/"
 	
 	ProxyPass '/' "balancer://static/"
         ProxyPassReverse '/' "balancer://static/"
