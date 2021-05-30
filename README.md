@@ -1,4 +1,6 @@
 ---
+​---
+
 You have a GitHub repo with everything needed to build the various images.
 
 You have found a way to replace the static configuration of the reverse proxy (hard-coded IP adresses) with a dynamic configuration.
@@ -12,7 +14,10 @@ you can demonstrate that everything works fine when the IP addresses change!
 You are able to explain how you have implemented the solution and walk us through the configuration and the code.
 
 You have documented your configuration in your report.
+​---
 ---
+
+
 
 # README
 
