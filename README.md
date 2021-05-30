@@ -17,6 +17,7 @@ ProxyPass '/balancer-manager/' !
 ```
 Il devient alors possible d'avoir une inteface pour visualiser la configuration. Pour cela, il suffit de se connecter depuis le navigateur à cette adresse :
 > incroyable.ch/balancer-manager
+
 ![](assets/bm1.png)
 Et de voir les différentes caractéristiques lorsque des connexions sont effectuées sur les services.
 ![](assets/bm2.png)
