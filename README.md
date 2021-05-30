@@ -33,7 +33,9 @@ Lien : [https://github.com/chancejs/chancejs/blob/master/docs/thing/animal.md](h
 
 Le fichier package.json se trouve dans le dossier src.
 
-# Installation des nodes_mdules
+# Configuration
+
+### Installation des nodes_modules
 
 Les nodes modules se trouvent déjà dans le git.
 
@@ -45,9 +47,20 @@ Les dépendances se trouvent dans le fichier package.json.
 npm install
 ```
 
+### Index.js
+
+Lorsqu'une requête get est effectué au serveur sur la ressource /, le serveur va exécuter une requête renvoyant un tableau d'animaux.
+
+```
+app.get('/', function(req, res){
+	res.send(generateAnimalsIncredible());
+});
+
+```
 
 
-## Lancement du serveur
+
+### Lancement du serveur
 
 Afin de lancer le serveur, exécutez le script build-image.sh
 ![](assets/buildscript.png)
@@ -71,13 +84,15 @@ Sur les 2 images ci-dessous, on peut voir que la requête fait par le client est
 
 ![req2](assets/req2.PNG)
 
-## Port mapping
+## Accéder au serveur
+
+### Port mapping
 
 Une fois le conteneur en exécution, le serveur est ensuite accessible en localhost sur le port 3000 grâce au port mapping.
 
 ![localhost](assets/localhost.PNG)
 
-## Avec l'ip du conteneur
+### Avec l'ip du conteneur
 
 Afin de connaitre le nom du container :
 ![](assets/dockerps.png)
