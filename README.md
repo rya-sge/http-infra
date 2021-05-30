@@ -3,6 +3,7 @@ You extend the reverse proxy configuration to support load balancing.
 You show that you can have multiple static server nodes and multiple dynamic server nodes.
 You prove that the load balancer can distribute HTTP requests between these nodes.
 You have documented your configuration and your validation procedure in your report.
+
 ---
 
 
@@ -28,7 +29,7 @@ Cette partie indique, dans l'ordre, ce que fait le dockerfile
 
 ## Proxy
 
-Le ficier de configuration est config-template.php
+Le fichier de configuration est config-template.php
 
 Il y a 2 proxy balancers : un pour le serveur static et l'autre pour le dynamique.
 
@@ -44,7 +45,23 @@ La directive ProxyPassReverse va obliger la réécriture des en-tête afin de co
 
 La directive proxyPass associe une adresse au groupe de balancer correspondant
 
+## Preuve
 
+Pour prouver que les requêtes sont bien répartis entre les serveurs, nous allons renseigner une mauvaise adresse ip pour la variable DYNAMIC_APP_2
+
+![ex3](assets/ex3.PNG)
+
+
+
+Ensuite, lorsqu'on ouvre la console du navigateur, on peut remarquer qu'une requête sur deux n'aboutit pas.
+
+![ex4](C:\Users\super\switchdrive\HEIG\s4\RES\labo\http_final\http-infra\assets\ex4.PNG)
+
+
+
+Dans les logs du reverse proxy, on peut voir une erreur de proxy avec l'adresse IP incorrect
+
+![log](assets/log.PNG)
 
 ## Sources annexes:
 
@@ -53,4 +70,8 @@ La directive proxyPass associe une adresse au groupe de balancer correspondant
 Directive proxy pass
 
 - https://httpd.apache.org/docs/2.4/mod/mod_proxy.html#proxypass
+
+Article complet sur apache :
+
 - https://fr.slideshare.net/RachidNIDSAID/apache-http
+
