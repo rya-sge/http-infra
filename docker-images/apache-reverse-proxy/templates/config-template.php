@@ -16,16 +16,21 @@ $DYNAMIC_APP_2 = getenv('DYNAMIC_APP_2');
 	
 	<Proxy balancer://static>
 
-		BalancerMember 'http://<?php print "$STATIC_APP_1"?>'
+		BalancerMember 'http://<?php print "$STATIC_APP_1"?>' route=1
 
-		BalancerMember 'http://<?php print "$STATIC_APP_2"?>'  				
+		BalancerMember 'http://<?php print "$STATIC_APP_2"?>' route=2
+		
+		ProxySet stickysession=ROUTEID
+		 				
 
 	</Proxy>
 	
 	<Proxy balancer://dynamic>
-		BalancerMember 'http://<?php print "$DYNAMIC_APP_1"?>' 
+		BalancerMember 'http://<?php print "$DYNAMIC_APP_1"?>' route=1
 
-		BalancerMember 'http://<?php print "$DYNAMIC_APP_2"?>' 			
+		BalancerMember 'http://<?php print "$DYNAMIC_APP_2"?>' route=2
+		
+		ProxySet stickysession=ROUTEID 			
 
 	</Proxy>
 
