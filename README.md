@@ -55,7 +55,7 @@ Pour prouver que les requêtes sont bien répartis entre les serveurs, nous allo
 
 Ensuite, lorsqu'on ouvre la console du navigateur, on peut remarquer qu'une requête sur deux n'aboutit pas.
 
-![ex4](C:\Users\super\switchdrive\HEIG\s4\RES\labo\http_final\http-infra\assets\ex4.PNG)
+![ex4](assets/ex4.PNG)
 
 
 
